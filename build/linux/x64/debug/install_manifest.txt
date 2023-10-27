@@ -1,0 +1,15 @@
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/writopia_frontend
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/logo.jpg
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/hero.jpg
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/bg.jpg
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/version.json
