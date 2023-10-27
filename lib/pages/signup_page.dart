@@ -44,7 +44,7 @@ class SignUpPage extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                         radius: 50,
                         child: Image.asset(
-                          "assets/images/logo.png",
+                          "assets/images/logo.jpg",
                           // width: ,
                           height: 150,
                         ),
@@ -61,19 +61,19 @@ class SignUpPage extends StatelessWidget {
                           child: AnimatedTextKit(
                             animatedTexts: [
                               TypewriterAnimatedText(
-                                "Working with Ai Wakforce is easy",
+                                "Working with Writopia is easy",
                                 textAlign: TextAlign.center,
                               ),
                               TypewriterAnimatedText(
-                                "Bid Jobs",
+                                "Finish Assignments in time",
                                 textAlign: TextAlign.center,
                               ),
                               TypewriterAnimatedText(
-                                "Complete tasks!",
+                                "Work with professionals",
                                 textAlign: TextAlign.center,
                               ),
                               TypewriterAnimatedText(
-                                "Get paid!",
+                                "Get exceptional grades!",
                                 textAlign: TextAlign.center,
                               )
                             ],
@@ -83,22 +83,6 @@ class SignUpPage extends StatelessWidget {
                         ),
                       ),
 
-                      Container(
-                        constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width * 0.25),
-                        padding: const EdgeInsets.all(12),
-                        child: TextField(
-                          controller: signUpController.usernameController.value,
-                          decoration: const InputDecoration(
-                            hintText: "pstar47",
-                            labelText: "Username",
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                            ),
-                          ),
-                        ),
-                      ),
                       // Name inputs
                       Container(
                         constraints: const BoxConstraints(maxWidth: 200),
@@ -144,27 +128,6 @@ class SignUpPage extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-
-                      Container(
-                        constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width * 0.25),
-                        padding: const EdgeInsets.all(12),
-                        child: TextField(
-                          controller: signUpController.idController.value,
-                          maxLength: 8,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(RegExp("[0-9]"))
-                          ],
-                          decoration: const InputDecoration(
-                            hintText: "21436587",
-                            labelText: "National ID",
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                            ),
-                          ),
                         ),
                       ),
 
@@ -263,7 +226,7 @@ class SignUpPage extends StatelessWidget {
                             ),
                             onTap: () {
                               // currentUser = null;
-                              // signUpController.backToLogin();
+                              Get.toNamed('/login');
                             },
                           ),
                         ),
@@ -282,7 +245,7 @@ class SignUpPage extends StatelessWidget {
                                 },
                               ),
                               const Text(
-                                "I agree to the terms and conditions outlined by Ai Wakforce",
+                                "I agree to the terms and conditions outlined by Writopia",
                               ),
                             ],
                           ),
