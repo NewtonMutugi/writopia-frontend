@@ -161,6 +161,7 @@ class LoginPage extends StatelessWidget {
                                         loginPageController.isLoading.value =
                                             true;
                                         // loginPageController.login();
+                                        Get.toNamed('/dashboard');
                                       },
                                       style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.only(

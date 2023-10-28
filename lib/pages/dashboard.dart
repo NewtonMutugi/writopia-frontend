@@ -1,102 +1,87 @@
+import 'package:easy_sidemenu/easy_sidemenu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:writopia_frontend/constants/themes.dart';
+import 'package:writopia_frontend/controllers/dashboard_controller.dart';
+import 'package:writopia_frontend/widgets/logo_text.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    DashBoardController dashBoardController = Get.put(DashBoardController());
+    var firstname = "Newton";
+    var position =
+        dashBoardController.currentUser.value == "admin" ? "admin" : "standard";
+
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
-            Expanded(
-              flex: 1,
-              child: Container(
+            Obx(
+              () => Container(
                 color: Colors.white,
-                child: const Column(
-                  children: [
-                    SizedBox(height: 20),
-                    Text(
-                      "Writopia",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+                height: MediaQuery.of(context).size.height,
+                width: 250,
+                child: SideMenu(
+                  footer: const Text("Debug Release"),
+                  collapseWidth: 250,
+                  title: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 12, bottom: 10, left: 60, right: 30),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: LogoText(),
+                        ),
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundColor: Colors.transparent,
+                          child: Image.asset(
+                            "assets/images/profile.png",
+                          ),
+                        ),
+                        Text(
+                          "${firstname} - ${position}",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Dashboard",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Profile",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Settings",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Logout",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                  ),
+                  items: dashBoardController.buildSideMenuItems(),
+                  controller: dashBoardController.sideMenuController.value,
+                  style: sideMenuStyle,
                 ),
               ),
             ),
             Expanded(
-              flex: 4,
-              child: Container(
-                color: Colors.grey[200],
-                child: const Column(
-                  children: [
-                    SizedBox(height: 20),
-                    Text(
-                      "Welcome to Writopia!",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "This is a placeholder for the dashboard.",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: dashBoardController.pageController.value,
+                children: dashBoardController.buildPages(),
               ),
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          RxString user = "admin".obs;
+          dashBoardController.currentUser = user;
+          Get.offAndToNamed('/dashboard');
+        },
+        child: Icon(CupertinoIcons.ant),
       ),
     );
   }

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:writopia_frontend/pages/dashboard.dart';
 import 'package:writopia_frontend/pages/login_page.dart';
 import 'package:writopia_frontend/pages/signup_page.dart';
 
@@ -18,6 +18,6 @@ class Routes {
     GetPage(name: home, page: () => const LoginPage()),
     GetPage(name: login, page: () => const LoginPage()),
     GetPage(name: register, page: () => const SignUpPage()),
-    GetPage(name: dashboard, page: () => const Placeholder()),
+    GetPage(name: dashboard, page: () => const Dashboard()),
   ];
 }
