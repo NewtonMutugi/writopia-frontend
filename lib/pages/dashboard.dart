@@ -2,7 +2,6 @@ import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:writopia_frontend/constants/themes.dart';
 import 'package:writopia_frontend/controllers/dashboard_controller.dart';
 import 'package:writopia_frontend/widgets/logo_text.dart';
@@ -31,6 +30,7 @@ class Dashboard extends StatelessWidget {
                 child: SideMenu(
                   footer: const Text("Debug Release"),
                   collapseWidth: 250,
+                  showToggle: true,
                   title: Padding(
                     padding: const EdgeInsets.only(
                         top: 12, bottom: 10, left: 60, right: 30),
@@ -81,7 +81,7 @@ class Dashboard extends StatelessWidget {
           dashBoardController.currentUser = user;
           Get.offAndToNamed('/dashboard');
         },
-        child: Icon(CupertinoIcons.ant),
+        child: const Icon(CupertinoIcons.ant),
       ),
     );
   }

@@ -3,6 +3,7 @@
 /home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
 /home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
 /home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES
 /home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/logo.jpg
 /home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/profile.png
 /home/mutugi/Documents/Projects/flutter/writopia_frontend/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/hero.jpg

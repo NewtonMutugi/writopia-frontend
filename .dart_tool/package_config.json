@@ -158,6 +158,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "date_field",
+      "rootUri": "file:///home/mutugi/.pub-cache/hosted/pub.dev/date_field-3.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "easy_sidemenu",
       "rootUri": "file:///home/mutugi/.pub-cache/hosted/pub.dev/easy_sidemenu-0.5.0",
       "packageUri": "lib/",
@@ -632,7 +638,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-27T20:32:35.252620Z",
+  "generated": "2023-10-29T02:40:44.465082Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }

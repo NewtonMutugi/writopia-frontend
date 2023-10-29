@@ -158,8 +158,8 @@ class LoginPage extends StatelessWidget {
                                       ))
                                   : ElevatedButton(
                                       onPressed: () {
-                                        loginPageController.isLoading.value =
-                                            true;
+                                        // loginPageController.isLoading.value =
+                                        //     true;
                                         // loginPageController.login();
                                         Get.toNamed('/dashboard');
                                       },

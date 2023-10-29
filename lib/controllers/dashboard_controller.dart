@@ -1,16 +1,23 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import 'package:writopia_frontend/constants/constants.dart';
+import 'package:writopia_frontend/controllers/login_controller.dart';
+import 'package:writopia_frontend/pages/views/list_user_assignments.dart';
+import 'package:writopia_frontend/pages/views/new_user_assignment.dart';
 import 'package:writopia_frontend/pages/views/user_dashboard.dart';
 
 class DashBoardController extends GetxController {
   var selectedIndex = 0.obs;
   var pageController = PageController(viewportFraction: 1, keepPage: true).obs;
   var sideMenuController = SideMenuController().obs;
+  final RxBool isSideMenuOpen = true.obs; // Initially open
+
+  // Function to toggle the side menu
+  void toggleSideMenu() {
+    isSideMenuOpen.value = !isSideMenuOpen.value;
+  }
+
   RxString currentUser = 'standard'.obs;
   RxString userName = 'Newton'.obs;
 
@@ -61,33 +68,33 @@ class DashBoardController extends GetxController {
           },
         ),
         SideMenuItem(
-          title: "Manage tasks",
+          title: "Manage Assignments",
           icon: const Icon(Icons.checklist),
           onTap: (index, _) {
             changePage(index, _);
           },
         ),
-        SideMenuItem(
-          title: "Manage payouts",
-          icon: const Icon(Icons.payment),
-          onTap: (index, _) {
-            changePage(index, _);
-          },
-        ),
-        SideMenuItem(
-          title: "Manage users",
-          icon: const Icon(CupertinoIcons.person_3_fill),
-          onTap: (index, _) {
-            changePage(index, _);
-          },
-        ),
-        SideMenuItem(
-          title: "Settings",
-          icon: const Icon(Icons.settings_sharp),
-          onTap: (index, _) {
-            changePage(index, _);
-          },
-        ),
+        // SideMenuItem(
+        //   title: "Manage payouts",
+        //   icon: const Icon(Icons.payment),
+        //   onTap: (index, _) {
+        //     changePage(index, _);
+        //   },
+        // ),
+        // SideMenuItem(
+        //   title: "Manage users",
+        //   icon: const Icon(CupertinoIcons.person_3_fill),
+        //   onTap: (index, _) {
+        //     changePage(index, _);
+        //   },
+        // ),
+        // SideMenuItem(
+        //   title: "Settings",
+        //   icon: const Icon(Icons.settings_sharp),
+        //   onTap: (index, _) {
+        //     changePage(index, _);
+        //   },
+        // ),
         SideMenuItem(
           title: "Logout",
           icon: const Icon(Icons.exit_to_app),
@@ -97,7 +104,6 @@ class DashBoardController extends GetxController {
         ),
       ];
     }
-
     // Standard User view
     return <SideMenuItem>[
       SideMenuItem(
@@ -108,31 +114,35 @@ class DashBoardController extends GetxController {
         },
       ),
       SideMenuItem(
-        title: "My tasks",
+        title: "New Assignment",
         icon: const Icon(Icons.checklist),
         onTap: (index, _) {
           changePage(index, _);
         },
       ),
       SideMenuItem(
-        title: "My payouts",
+        title: "My Assignments",
         icon: const Icon(Icons.payment),
         onTap: (index, _) {
           changePage(index, _);
         },
       ),
-      SideMenuItem(
-        title: "Settings",
-        icon: const Icon(Icons.settings_sharp),
-        onTap: (index, _) {
-          changePage(index, _);
-        },
-      ),
+      // SideMenuItem(
+      //   title: "Settings",
+      //   icon: const Icon(Icons.settings_sharp),
+      //   onTap: (index, _) {
+      //     changePage(index, _);
+      //   },
+      // ),
       SideMenuItem(
         title: "Logout",
         icon: const Icon(Icons.exit_to_app),
         onTap: (index, _) {
           // logout();
+          LoginController logincontroller = Get.put(LoginController());
+          Get.offAndToNamed('/login');
+          Get.snackbar("Message", "Log out successfully");
+          logincontroller.isLoading.value = false;
         },
       ),
     ];
@@ -152,9 +162,9 @@ class DashBoardController extends GetxController {
         Center(
           child: Placeholder(),
         ),
-        SizedBox(
-          child: Placeholder(),
-        ),
+        // SizedBox(
+        //   child: Placeholder(),
+        // ),
         SizedBox(
           child: Placeholder(),
         ),
@@ -162,21 +172,21 @@ class DashBoardController extends GetxController {
     }
 
     // Standard User Views
-    return const [
+    return [
       Center(
         child: UserDashboard(),
       ),
       SizedBox(
-        child: Placeholder(),
+        child: NewUserAssignment(),
       ),
       SizedBox(
-        child: Placeholder(),
+        child: ListUserAssignments(),
       ),
-      Center(
-        child: SizedBox(
-          child: Placeholder(),
-        ),
-      ),
+      // Center(
+      //   child: SizedBox(
+      //     child: Placeholder(),
+      //   ),
+      // ),
     ];
   }
 

@@ -1,7 +1,6 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 
-
 var darkGray = const Color(0xff023047);
 var lightOrange = const Color(0xffFFB703);
 var darkOrange = const Color(0xffFB8500);
@@ -36,10 +35,10 @@ final lightTheme = ThemeData(
 );
 
 final sideMenuStyle = SideMenuStyle(
-  displayMode: SideMenuDisplayMode.open,
+  displayMode: SideMenuDisplayMode.auto,
   decoration: const BoxDecoration(),
-  openSideMenuWidth: 250,
-  compactSideMenuWidth: 60,
+  openSideMenuWidth: 200,
+  compactSideMenuWidth: 40,
   hoverColor: Colors.blue[100],
   selectedColor: Colors.lightBlue,
   selectedIconColor: Colors.white,
