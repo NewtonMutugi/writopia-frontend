@@ -5,43 +5,43 @@ part 'user.g.dart';
 @HiveType(typeId: 0)
 class User {
   @HiveField(0)
-  late int id;
+  int? id;
 
   @HiveField(1)
-  late String firstName;
+  String? firstName;
 
   @HiveField(2)
-  late String lastName;
+  String? lastName;
 
   @HiveField(3)
-  late String email;
+  String? email;
 
   @HiveField(4)
-  late String password;
+  String? password;
 
   @HiveField(5)
-  late bool active;
+  bool? active;
 
   @HiveField(6)
-  late String country;
+  String? country;
 
   @HiveField(7)
-  late String phone;
+  String? phone;
 
   @HiveField(8)
-  late int userType;
+  int? userType;
 
   @HiveField(9)
-  late UserTypeInformation userTypeInfo;
+  UserTypeInformation? userTypeInfo;
 
   @HiveField(10)
-  late DateTime lastLogin;
+  DateTime? lastLogin;
 
   @HiveField(11)
-  late DateTime createdAt;
+  DateTime? createdAt;
 
   @HiveField(12)
-  late DateTime updatedAt;
+  DateTime? updatedAt;
 
   User();
 
@@ -71,10 +71,10 @@ class User {
       'country': country,
       'phone': phone,
       'user_type': userType,
-      'user_type_info': userTypeInfo.toJson(),
-      'last_login': lastLogin.toIso8601String(),
-      'created_at': createdAt.toIso8601String(),
-      'updated_at': updatedAt.toIso8601String(),
+      'user_type_info': userTypeInfo?.toJson(),
+      'last_login': lastLogin?.toIso8601String(),
+      'created_at': createdAt?.toIso8601String(),
+      'updated_at': updatedAt?.toIso8601String(),
     };
   }
 }
@@ -100,4 +100,3 @@ class UserTypeInformation {
     };
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 // import 'package:wakforce/constants/constants.dart';
 import 'package:writopia_frontend/controllers/signup_controller.dart';
@@ -148,6 +147,40 @@ class SignUpPage extends StatelessWidget {
                         ),
                       ),
 
+                      Container(
+                        constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.25),
+                        padding: const EdgeInsets.all(12),
+                        child: TextField(
+                          controller: signUpController.phoneController.value,
+                          decoration: const InputDecoration(
+                            hintText: "+2540898282382",
+                            labelText: "Phone",
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.25),
+                        padding: const EdgeInsets.all(12),
+                        child: TextField(
+                          controller: signUpController.countryController.value,
+                          decoration: const InputDecoration(
+                            hintText: "Kenya",
+                            labelText: "Country",
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                            ),
+                          ),
+                        ),
+                      ),
+
                       //password
                       Obx(
                         () => Container(
@@ -255,9 +288,8 @@ class SignUpPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(20),
                         child: ElevatedButton(
-                          onPressed: () {
-                            // signUpController.verifyFormInputs();
-                            // signUpController.login();
+                          onPressed: () async {
+                            await signUpController.signUp();
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.only(top: 25, bottom: 25),
