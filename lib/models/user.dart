@@ -1,49 +1,64 @@
 import 'package:hive/hive.dart';
 
-// part 'user.g.dart';
+part 'user.g.dart';
 
 @HiveType(typeId: 0)
 class User {
   @HiveField(0)
-  int? id;
+  late int id;
 
   @HiveField(1)
-  String? firstName;
+  late String firstName;
 
   @HiveField(2)
-  String? lastName;
+  late String lastName;
 
   @HiveField(3)
-  String? email;
+  late String email;
 
   @HiveField(4)
-  String? password;
+  late String password;
 
   @HiveField(5)
-  bool? active;
+  late bool active;
 
   @HiveField(6)
-  DateTime? dateJoined;
+  late String country;
 
   @HiveField(7)
-  DateTime? lastLogin;
+  late String phone;
+
+  @HiveField(8)
+  late int userType;
+
+  @HiveField(9)
+  late UserTypeInformation userTypeInfo;
+
+  @HiveField(10)
+  late DateTime lastLogin;
+
+  @HiveField(11)
+  late DateTime createdAt;
+
+  @HiveField(12)
+  late DateTime updatedAt;
 
   User();
 
-  User.fromJson(Map<dynamic, dynamic> json)
-      : id = json["id"],
-        password = json["password"],
-        firstName = json["first_name"],
-        lastName = json["last_name"],
-        email = json["email"],
-        active = json["active"],
-        dateJoined = DateTime.parse(json["date_joined"]) {
-    if (json["last_login"] == null) {
-      lastLogin = null;
-    } else {
-      lastLogin = DateTime.parse(json["last_login"]);
-    }
-  }
+  User.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        firstName = json['first_name'],
+        lastName = json['last_name'],
+        email = json['email'],
+        password = json['password'],
+        active = json['active'],
+        country = json['country'],
+        phone = json['phone'],
+        userType = json['user_type'],
+        userTypeInfo = UserTypeInformation.fromJson(json['user_type_info']),
+        lastLogin = DateTime.parse(json['last_login']),
+        createdAt = DateTime.parse(json['created_at']),
+        updatedAt = DateTime.parse(json['updated_at']);
 
   Map<String, dynamic> toJson() {
     return {
@@ -52,11 +67,37 @@ class User {
       'last_name': lastName,
       'email': email,
       'password': password,
-      'date_joined': dateJoined?.toIso8601String(),
+      'active': active,
+      'country': country,
+      'phone': phone,
+      'user_type': userType,
+      'user_type_info': userTypeInfo.toJson(),
+      'last_login': lastLogin.toIso8601String(),
+      'created_at': createdAt.toIso8601String(),
+      'updated_at': updatedAt.toIso8601String(),
     };
   }
+}
 
-  Map<String, String> toLoginJson() {
-    return {"username": email!, "password": password!};
+@HiveType(typeId: 1)
+class UserTypeInformation {
+  @HiveField(0)
+  late int id;
+
+  @HiveField(1)
+  late String userType;
+
+  UserTypeInformation();
+
+  UserTypeInformation.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        userType = json['user_type'];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'user_type': userType,
+    };
   }
 }
+
