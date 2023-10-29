@@ -1,10 +1,14 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:hive/hive.dart";
 import "package:responsive_framework/responsive_framework.dart";
 import "package:writopia_frontend/constants/themes.dart";
+import "package:writopia_frontend/models/user.dart";
 import "package:writopia_frontend/routes/routes.dart";
 
 void main() {
+  Hive.registerAdapter(UserAdapter());
+  Hive.registerAdapter(UserTypeInformationAdapter());
   runApp(const App());
 }
 

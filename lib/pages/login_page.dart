@@ -105,8 +105,8 @@ class LoginPage extends StatelessWidget {
                               controller:
                                   loginPageController.usernameController.value,
                               decoration: const InputDecoration(
-                                hintText: "username",
-                                labelText: "Username",
+                                hintText: "someone@example.com",
+                                labelText: "Email",
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8)),
@@ -134,7 +134,7 @@ class LoginPage extends StatelessWidget {
                                             !loginPageController
                                                 .showPassword.value;
                                       },
-                                      icon: Icon(CupertinoIcons.eye)),
+                                      icon: const Icon(CupertinoIcons.eye)),
                                   hintText: "Your secure password",
                                   labelText: "Password",
                                   border: const OutlineInputBorder(
@@ -157,11 +157,13 @@ class LoginPage extends StatelessWidget {
                                         size: 50,
                                       ))
                                   : ElevatedButton(
-                                      onPressed: () {
-                                        // loginPageController.isLoading.value =
-                                        //     true;
-                                        // loginPageController.login();
-                                        Get.toNamed('/dashboard');
+                                      onPressed: () async {
+                                        loginPageController.isLoading.value =
+                                            true;
+                                        await loginPageController.login();
+                                        loginPageController.isLoading.value =
+                                            false;
+                                        // Get.toNamed('/dashboard');
                                       },
                                       style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.only(
@@ -200,7 +202,7 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
 
-                              Text("|"),
+                              const Text("|"),
 
                               // Register
                               Container(

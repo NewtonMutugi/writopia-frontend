@@ -13,31 +13,25 @@ class UserAdapter extends TypeAdapter<User> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return User()
-      ..id = fields[0] as int?
-      ..firstName = fields[1] as String?
-      ..lastName = fields[2] as String?
-      ..email = fields[3] as String?
-      ..password = fields[4] as String?
-      ..isActive = fields[5] as bool?
-      ..altPhoneNo = fields[6] as String?
-      ..emergencyPhone = fields[7] as String?
-      ..username = fields[8] as String?
-      ..phoneNo = fields[9] as String?
-      ..location = fields[10] as String?
-      ..nationalID = fields[11] as int?
-      ..levelOfEducation = fields[12] as String?
-      ..currentPosition = fields[13] as String?
-      ..dob = fields[14] as DateTime?
-      ..course = fields[15] as String?
-      ..dateJoined = fields[16] as DateTime?
-      ..lastLogin = fields[17] as DateTime?
-      ..sessionExpiry = fields[18] as DateTime?;
+      ..id = fields[0] as int
+      ..firstName = fields[1] as String
+      ..lastName = fields[2] as String
+      ..email = fields[3] as String
+      ..password = fields[4] as String
+      ..active = fields[5] as bool
+      ..country = fields[6] as String
+      ..phone = fields[7] as String
+      ..userType = fields[8] as int
+      ..userTypeInfo = fields[9] as UserTypeInformation
+      ..lastLogin = fields[10] as DateTime
+      ..createdAt = fields[11] as DateTime
+      ..updatedAt = fields[12] as DateTime;
   }
 
   @override
   void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -49,33 +43,21 @@ class UserAdapter extends TypeAdapter<User> {
       ..writeByte(4)
       ..write(obj.password)
       ..writeByte(5)
-      ..write(obj.isActive)
+      ..write(obj.active)
       ..writeByte(6)
-      ..write(obj.altPhoneNo)
+      ..write(obj.country)
       ..writeByte(7)
-      ..write(obj.emergencyPhone)
+      ..write(obj.phone)
       ..writeByte(8)
-      ..write(obj.username)
+      ..write(obj.userType)
       ..writeByte(9)
-      ..write(obj.phoneNo)
+      ..write(obj.userTypeInfo)
       ..writeByte(10)
-      ..write(obj.location)
-      ..writeByte(11)
-      ..write(obj.nationalID)
-      ..writeByte(12)
-      ..write(obj.levelOfEducation)
-      ..writeByte(13)
-      ..write(obj.currentPosition)
-      ..writeByte(14)
-      ..write(obj.dob)
-      ..writeByte(15)
-      ..write(obj.course)
-      ..writeByte(16)
-      ..write(obj.dateJoined)
-      ..writeByte(17)
       ..write(obj.lastLogin)
-      ..writeByte(18)
-      ..write(obj.sessionExpiry);
+      ..writeByte(11)
+      ..write(obj.createdAt)
+      ..writeByte(12)
+      ..write(obj.updatedAt);
   }
 
   @override
@@ -85,6 +67,42 @@ class UserAdapter extends TypeAdapter<User> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UserAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class UserTypeInformationAdapter extends TypeAdapter<UserTypeInformation> {
+  @override
+  final int typeId = 1;
+
+  @override
+  UserTypeInformation read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return UserTypeInformation()
+      ..id = fields[0] as int
+      ..userType = fields[1] as String;
+  }
+
+  @override
+  void write(BinaryWriter writer, UserTypeInformation obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.userType);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserTypeInformationAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
